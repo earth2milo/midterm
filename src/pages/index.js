@@ -1,7 +1,7 @@
 import "../app/globals.css"
 import React from "react";
 import RandomMetImageComponent from "../app/components/api.js";
-import applyColorsToRightContent from "../app/components/api2.js"
+
 
 
 function App() {
@@ -10,8 +10,8 @@ function App() {
       <div className="App">
       <RandomMetImageComponent/> 
         </div>   
-        <div className="split right" id="right-content">
-<applyColorsToRightContent/>
+     <div className="split right" id="right-content">
+ <applyColorsToRightContent/>
  
             
         </div> 
