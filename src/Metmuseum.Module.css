@@ -1,0 +1,27 @@
+
+.artwork-container {
+    text-align:center;
+    margin: 50 auto;
+}
+
+.artwork-title {
+    font-size: 14px;
+    font-family: 'Domine', serif;
+    margin-bottom: 10px;
+}
+
+.img-wrapper {
+max-width:400px;
+}
+
+
+.artwork-image {
+    max-width: 300px;
+    max-height: 300px;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    border:10px indianred;
+    border-radius:15px;
+}
+
