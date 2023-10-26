@@ -9,8 +9,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: linear-gradient(to bottom, #3498db, #2c3e50); /* Gradient colors */
-  background-size: 100% 100vh; /* Ensure the gradient covers the entire viewport */
   position: relative;
   overflow: hidden;
 

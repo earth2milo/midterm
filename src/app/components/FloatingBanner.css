@@ -1,0 +1,20 @@
+.loading-container {
+    height: 5px; /* Initial height of the loading container */
+    width: 100%; /* Set the width to fill the parent container */
+    background-color: #3498db; /* Loading container color */
+    position: relative;
+    overflow: hidden;
+    animation: fillLoadingContainer 2s ease forwards; /* Adjust duration as needed */
+  }
+  
+  @keyframes fillLoadingContainer {
+    0% {
+      width: 0; /* Starting width, set it to 0 to create the filling effect */
+    }
+    100% {
+      width: 100%; /* Final width, set it to 100% to fill up the container */
+    }
+  }
+
+
+  

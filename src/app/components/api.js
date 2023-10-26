@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../Metmuseum.Module.css";
+import FloatingBanner from "./FloatingBanner";
 
 const API_BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1";
 
@@ -32,15 +33,24 @@ const MetMuseumComponent = () => {
           artistDisplayName: fetchedArtwork.artistDisplayName,
         };
 
-        // Use the culture information to search for related content on Wikipedia
-        const wikiResponse = await axios.get(`https://en.wikipedia.org/api/rest_v1/page/summary/${fetchedArtwork.culture}`);
+        // Attempt to fetch Wikipedia data based on culture first
+        let wikiResponse = await searchWikipedia(fetchedArtwork.culture);
+      
+        // If no result for culture, try fetching based on period
+        if (!wikiResponse) {
+          wikiResponse = await searchWikipedia(fetchedArtwork.period);
+        }
 
-        // Check if the Wikipedia response indicates a missing page
-        if (wikiResponse.data.type === "https://mediawiki.org/wiki/HyperSwitch/errors/not_found") {
-          console.error("Error: Wikipedia page not found for the specified culture.");
-          setWikipediaArticle(null); // Set Wikipedia article to null
+        // If still no result, try fetching based on artistDisplayName
+        if (!wikiResponse) {
+          wikiResponse = await searchWikipedia(fetchedArtwork.artistDisplayName);
+        }
+
+        if (wikiResponse) {
+          setWikipediaArticle(wikiResponse);
         } else {
-          setWikipediaArticle(wikiResponse.data);
+          console.error("Error: Wikipedia page not found for the specified culture, period, or artistDisplayName.");
+          setWikipediaArticle(null);
         }
 
         setRandomArtwork({ ...fetchedArtwork, ...additionalInfo });
@@ -51,7 +61,37 @@ const MetMuseumComponent = () => {
       }
     };
 
+    const searchWikipedia = async (searchTerm) => {
+      try {
+        const response = await axios.get(`https://en.wikipedia.org/api/rest_v1/page/summary/${searchTerm}`);
+        
+        // Check if the response indicates a disambiguation page
+        if (response.data.type === "https://mediawiki.org/wiki/HyperSwitch/errors/not_found" ||
+            response.data.type === "https://en.wikipedia.org/api/rest_v1/page/other" ||
+            response.data.type === "disambiguation") {
+          // Handle disambiguation page, or set null if you want to skip it
+          console.log("Disambiguation page found for:", searchTerm);
+          return null;
+        }
+        
+        // Check if the response contains relevant information
+        if (response.data.title && response.data.extract) {
+          return response.data;
+        } else {
+          // Handle invalid or empty response
+          console.error("Invalid Wikipedia response:", response.data);
+          return null;
+        }
+      } catch (error) {
+        // Handle errors
+        console.error("Error fetching Wikipedia data:", error);
+        return null;
+      }
+    };
+
+    // Call the function to fetch data
     fetchRandomArtwork();
+
   }, []);
 
   return (
@@ -71,14 +111,17 @@ const MetMuseumComponent = () => {
             {randomArtwork.period && <p><strong>Period:</strong> {randomArtwork.period}</p>}
             {randomArtwork.artistDisplayName && <p><strong>Artist Display Name:</strong> {randomArtwork.artistDisplayName}</p>}
           </div>
-          <p>What does Wikipedia have to say about the culture of this work?</p>
+          <h1>What does Wikipedia have to say about this work?</h1>
           <div className="wikipedia-article">
             <h2>{wikipediaArticle.title}</h2>
             <p>{wikipediaArticle.extract}</p>
           </div>
         </div>
       ) : (
-        <p>Oh no! The Met API tripped and fell on the way to work! and there is no information available for the selected artwork. Please refresh!.</p>
+        <div>
+          <FloatingBanner />
+          <p>Oh no! The Met API tripped and fell on the way to work! and there is no information available for the selected artwork. Please refresh!</p>
+        </div>
       )}
     </div>
   );
