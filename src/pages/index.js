@@ -10,11 +10,7 @@ function App() {
       <div className="App">
       <RandomMetImageComponent/> 
         </div>   
-     <div className="split right" id="right-content">
- <applyColorsToRightContent/>
- 
-            
-        </div> 
+       
     </div>
    
   );
