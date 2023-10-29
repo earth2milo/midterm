@@ -10,13 +10,21 @@
     margin-bottom: 10px;
 }
 
+.additional-info {
+    margin-top: 20px; /* Add some space between the image and additional info */
+    padding: 15px; /* Add padding inside the brown box */
+    border: 2px solid #8B4513; /* Brown border color */
+    background-color: #D2B48C; /* Brown background color */
+    text-align: left; /* Align text to the left */
+}
+
 .img-wrapper {
 max-width:400px;
 }
 
 
 .artwork-image {
-    max-width: 300px;
+    max-width: 600px;
     max-height: 300px;
     width:100%;
     height:100%;

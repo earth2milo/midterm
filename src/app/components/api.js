@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../Metmuseum.Module.css";
-import FloatingBanner from "./FloatingBanner";
+import LoadingScreen from "./LoadingScreen";
 
 const API_BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1";
 
@@ -119,8 +119,9 @@ const MetMuseumComponent = () => {
         </div>
       ) : (
         <div>
-          <FloatingBanner />
-          <p>Oh no! The Met API tripped and fell on the way to work! and there is no information available for the selected artwork. Please refresh!</p>
+          <LoadingScreen/>
+          <p>Oh no! The Met API tripped and fell on the way to work! and there is no information available for the selected artwork. Please wait for it to load!</p>
+          <p>If it takes too long just refresh!</p>
         </div>
       )}
     </div>
