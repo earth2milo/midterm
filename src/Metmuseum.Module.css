@@ -1,4 +1,23 @@
 
+.header {
+font-size:3em;
+text-shadow: black 10px;
+text-decoration:underline;
+text-underline-offset: 30px;
+text-align:left;
+margin:0 auto;
+padding-top:25px;
+padding-bottom: 45px;
+}
+
+.titleWrap {
+margin:0 auto;
+border-color: #D2B48C;
+
+
+
+
+}
 .artwork-container {
     text-align:center;
     margin: 50 auto;
@@ -11,27 +30,57 @@
 }
 
 .additional-info {
-    margin-top: 20px; /* Add some space between the image and additional info */
-    padding: 15px; /* Add padding inside the brown box */
-    border: 2px solid #8B4513; /* Brown border color */
-    background-color: #D2B48C; /* Brown background color */
-    text-align: left; /* Align text to the left */
+    margin-top: 15px;
+    padding: 35px;
+    background-color: #D2B48C; 
+    border-style: ridge;
+    border-color: #D2B48C;
+    text-align: left; 
+    border-radius:15px;
+}
+
+.additional-info h2 {
+    padding-bottom:10px;
+    text-decoration:underline;
+}
+
+.additional-info p {
+text-transform: uppercase;
 }
 
 .img-wrapper {
-max-width:400px;
+padding:25px;
+margin: 0 auto;
+max-width: 600px;
+max-height: 650px;
+
+
 }
 
 
 .artwork-image {
     max-width: 600px;
-    max-height: 300px;
+    max-height: 400px;
     width:100%;
     height:100%;
     object-fit: cover;
     margin-left:auto;   
     margin-right:auto;
-    border:5px indianred solid;
     border-radius:15px;
 }
 
+.wikipedia-article {
+margin: 0 auto;
+padding:5px;
+background-color: #D2B48C;
+
+}
+
+.wikipedia-article h2 {
+text-align:center;
+text-transform: uppercase;
+}
+
+.wikipedia-article p {
+    background-color:#D2B48C;
+}

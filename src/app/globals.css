@@ -12,19 +12,9 @@ body {
   position: relative;
   overflow: hidden;
 
-
-  .noise {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('./assets/noiseTexture.png'); 
-    z-index: 1; 
-  }
-
 }
+
+
 .App {
   text-align:center;
   border: 1px palegoldenrod;
@@ -44,8 +34,5 @@ body {
   height:100vh;
 }
 
-.right {
-  background-color: #2196F3;
-  height:100vh;
-}
+
 
