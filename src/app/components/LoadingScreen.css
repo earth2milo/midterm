@@ -1,6 +1,6 @@
 
 .loading-screen {
-
+  background-color: #ffd768;
 }
 
 .logoWrap {
@@ -16,7 +16,7 @@
 .logo {
 width:100px;
 border-radius:15px;
-background-color:#4caf50;
+background-color: #ffd768;
 height:100px;
 }
 
@@ -29,17 +29,18 @@ height:100px;
 }
 
 .progress-bar {
-  height: 100%;
-  width: 0;
-  background-color: #4caf50;
-  position: absolute;
-  animation: progress 4s linear infinite; 
+height: 100%;
+width: 0;
+border-color:  black 5px;
+background-color: #ffd768;
+animation: progress 3s linear infinite; 
 }
 
 .loading-text {
   text-align: center;
   line-height: 50px;
   color: #333;
+  background-color: #ffd768;
   font-weight: bold;
 }
 

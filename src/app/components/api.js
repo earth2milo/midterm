@@ -8,7 +8,8 @@ import axios from "axios";
 import "../../Metmuseum.Module.css";
 import LoadingScreen from "./LoadingScreen";
 
-const API_BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1"; // i'm setting the base URL and startpoint for the met api
+const API_BASE_URL = "https://collectionapi.metmuseum.org/public/collection/v1"; 
+// i'm setting the base URL and startpoint for the met api
 
 
 
@@ -60,7 +61,7 @@ const MetMuseumComponent = () => {
           artistDisplayName: fetchedArtwork.artistDisplayName,
         };
 
-
+       
 // so while coding this project, 90% of it was just spent debugging api responses, and finding that a lot of the randomly
 // generated artwork had inconsistent amounts of info filled out for the item
 // like a vase made in 500 BC would be missing an artistDisplayName
@@ -158,6 +159,22 @@ const MetMuseumComponent = () => {
 
   }, []);
 
+  useEffect(() => {
+    // Check if loading is false and there was an error (wikipediaArticle is null)
+    if (!loading && !wikipediaArticle) {
+      // Reload the page after 5 seconds (5000 milliseconds)
+      const reloadTimeout = setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+
+      // Clear the timeout if the component unmounts or if loading state changes
+      return () => {
+        clearTimeout(reloadTimeout);
+      };
+    }
+  }, [loading, wikipediaArticle]);
+
+
   return (
     <div className="artwork-container">
       {randomArtwork && wikipediaArticle ? (
@@ -197,11 +214,7 @@ const MetMuseumComponent = () => {
 
       ) : (
         <div>
-
           <LoadingScreen/>
-          <p>Oh no! The Met API tripped and fell on the way to work! and there is no information available for the selected artwork. Please wait for it to load!</p>
-          <p>If it takes too long just refresh!</p>
-
         </div>
       )}
 

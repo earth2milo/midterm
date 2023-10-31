@@ -8,16 +8,22 @@ body {
   flex-direction:column;
   margin: 0;
   padding: 0;
-  height: 100vh;
+  height: 100%;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+
 
 }
 
 
 .App {
+  background-image:url("https://i.pinimg.com/originals/08/9d/16/089d16beb15a326050cfdaca34560e51.png");
+  background-size:cover;
+  background-position: center;
   text-align:center;
-  border: 1px palegoldenrod;
+  width:55em;
+  height:100em;
+
 }
 
 .split {
@@ -30,8 +36,10 @@ body {
 }
 
 .left {
-  background-color: #4CAF50;
-  height:100vh;
+  background-image:url('/public/newspaper_wallpaper.png');
+  background-position: center;
+  background-size: cover;
+  height:100%;
 }
 
 
