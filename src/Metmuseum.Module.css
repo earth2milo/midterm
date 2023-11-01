@@ -3,7 +3,9 @@
 font-size:2em;
 text-shadow: black 10px;
 text-decoration:underline;
-text-shadow:dimgray 1px 0 5px;
+-webkit-text-stroke-width: 1px;
+-webkit-text-stroke-color: black;
+
 text-underline-offset: 20px;
 text-align:left;
 margin:5 auto;
@@ -29,8 +31,9 @@ border-color: #D2B48C;
 .artwork-title {
     font-size: 18px;
     font-family: 'Domine', serif;
-background-color:#ffd768;
-text-emphasis: 'x';
+    background-color:#ffd768;
+    text-emphasis: 'x';
+    padding: 2px;
     margin-bottom: 10px;
 }
 
